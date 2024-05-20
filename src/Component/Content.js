@@ -1,15 +1,12 @@
-import React, { useState } from "react";
 import Search from "./Search";
-import BrandsData from "../brands.json";
 import Brand from "./Brand";
+import { useContext } from "react";
+import MainContext from "../MainContext";
+import LazyLoad from "react-lazyload";
 
 export default function Content() {
-  const brandArray = [];
-  Object.keys(BrandsData).map((key) => {
-    brandArray.push(BrandsData[key]);
-  });
+  const { brands } = useContext(MainContext);
 
-  const [brands, setBrands] = useState(brandArray);
   return (
     <main className="content">
       <header className="header">
@@ -17,7 +14,14 @@ export default function Content() {
       </header>
       <section className="brands">
         {brands.map((brand, key) => (
-          <Brand key={key} brand={brand} />
+          <LazyLoad
+            key={key}
+            once={true}
+            overflow={true}
+            placeholder="Yükleniyor...."
+          >
+            <Brand brand={brand} />
+          </LazyLoad>
         ))}
       </section>
     </main>

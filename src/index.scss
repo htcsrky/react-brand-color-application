@@ -61,6 +61,16 @@ body {
     }
   }
 }
+.copied {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
 
 .about-modal-overlay {
   position: fixed;
@@ -158,13 +168,16 @@ body {
       background: #fff;
       padding: 15px;
       margin-bottom: 10px;
+
       h5 {
         font-size: 18px;
         margin-bottom: 10px;
+        cursor: pointer;
       }
       &-colors {
         display: flex;
         span {
+          cursor: pointer;
           background: var(--bgColor);
           height: 40px;
           display: flex;
@@ -175,6 +188,15 @@ body {
           color: var(--textColor);
           text-indent: -9999px;
           width: 70px;
+        }
+      }
+      &.selected {
+        border-color: red;
+        .brand-colors {
+          span {
+            text-indent: 0;
+            flex: 1;
+          }
         }
       }
     }

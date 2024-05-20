@@ -1,23 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import { getConstrastIQ } from "../helper";
+import MainContext from "../MainContext";
+import Clipboard from "react-clipboard.js";
 
 export default function Brand({ brand }) {
-  console.log(brand);
+  const { selectedBrands, setSelectedBrands, setCopied } =
+    useContext(MainContext);
+
+  const toogleSelected = () => {
+    if (selectedBrands.includes(brand.slug)) {
+      setSelectedBrands(selectedBrands.filter((slug) => slug !== brand.slug));
+    } else {
+      setSelectedBrands([...selectedBrands, brand.slug]);
+    }
+  };
+
+  const setColor = (color) => {
+    setCopied(color);
+  };
+
   return (
     <>
-      <div className="brand">
-        <h5>{brand.title}</h5>
+      <div
+        className={`brand ${
+          selectedBrands.includes(brand.slug) ? "selected" : ""
+        }`}
+      >
+        <h5 onClick={toogleSelected}>{brand.title}</h5>
         <div className="brand-colors">
           {brand.colors.map((color, key) => (
-            <span
+            <Clipboard
+              component="span"
               style={{
                 "--bgColor": `#${color}`,
                 "--textColor": `${getConstrastIQ(color)}`,
               }}
               key={key}
+              data-clipboard-text={color}
+              onSuccess={() => setColor(color)}
             >
               {color}
-            </span>
+            </Clipboard>
           ))}
         </div>
       </div>
