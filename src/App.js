@@ -26,7 +26,9 @@ function App() {
   }, [copied]);
 
   useEffect(() => {
-    setBrands(brandArray.filter((brand) => brand.title.toLowerCase().includes(search)));
+    setBrands(
+      brandArray.filter((brand) => brand.title.toLowerCase().includes(search))
+    );
   }, [search]);
 
   const data = {
@@ -41,9 +43,9 @@ function App() {
   return (
     <>
       <MainContext.Provider value={data}>
-        {copied && <Copied color={copied} />}
         <Sidebar />
         <Content />
+        {copied && <Copied color={copied} />}
       </MainContext.Provider>
     </>
   );

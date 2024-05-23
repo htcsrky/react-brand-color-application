@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { getConstrastIQ } from "../helper";
 import MainContext from "../MainContext";
-import Clipboard from "react-clipboard.js";
+import ClipboardButton from "react-clipboard.js";
 
 export default function Brand({ brand }) {
   const { selectedBrands, setSelectedBrands, setCopied } =
@@ -29,8 +29,8 @@ export default function Brand({ brand }) {
         <h5 onClick={toogleSelected}>{brand.title}</h5>
         <div className="brand-colors">
           {brand.colors.map((color, key) => (
-            <Clipboard
-              component="span"
+            <ClipboardButton
+              component={"span"}
               style={{
                 "--bgColor": `#${color}`,
                 "--textColor": `${getConstrastIQ(color)}`,
@@ -40,7 +40,7 @@ export default function Brand({ brand }) {
               onSuccess={() => setColor(color)}
             >
               {color}
-            </Clipboard>
+            </ClipboardButton>
           ))}
         </div>
       </div>
