@@ -7,6 +7,7 @@ import ClipboardButton from "react-clipboard.js";
 import { GrFormPreviousLink } from "react-icons/gr";
 import { getConstrastIQ } from "../helper";
 import { GrCopy } from "react-icons/gr";
+import Loader from "./Loader";
 
 export default function Permalink() {
   const { slugs } = useParams();
@@ -43,7 +44,7 @@ export default function Permalink() {
               key={brand.slug}
               once={true}
               overflow={true}
-              placeholder="Yükleniyor...."
+              placeholder={<Loader />}
             >
               <div
                 className={`brand ${

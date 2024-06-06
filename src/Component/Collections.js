@@ -5,6 +5,7 @@ import Download from "./Download";
 import LazyLoad from "react-lazyload";
 import Brand from "./Brand";
 import { GrFormPreviousLink } from "react-icons/gr";
+import Loader from "./Loader";
 
 export default function Collections() {
   const { slugs } = useParams();
@@ -18,7 +19,7 @@ export default function Collections() {
 
   const clearSelectedBrans = () => {
     selectedBrands([]);
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -38,7 +39,7 @@ export default function Collections() {
               key={brand.slug}
               once={true}
               overflow={true}
-              placeholder="Yükleniyor...."
+              placeholder={<Loader />}
             >
               <Brand brand={brand} />
             </LazyLoad>

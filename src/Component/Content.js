@@ -4,6 +4,7 @@ import { useContext } from "react";
 import MainContext from "../MainContext";
 import LazyLoad from "react-lazyload";
 import Download from "./Download";
+import Loader from "./Loader";
 
 export default function Content() {
   const { brands, selectedBrands } = useContext(MainContext);
@@ -20,7 +21,7 @@ export default function Content() {
             key={key}
             once={true}
             overflow={true}
-            placeholder="Yükleniyor...."
+            placeholder={<Loader />}
           >
             <Brand brand={brand} />
           </LazyLoad>
