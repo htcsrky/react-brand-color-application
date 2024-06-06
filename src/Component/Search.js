@@ -3,8 +3,7 @@ import { GrSearch } from "react-icons/gr";
 import MainContext from "../MainContext";
 
 export default function Search() {
-  const { search, setSearch } = useContext(MainContext);
-  console.log(search)
+  const { setSearch } = useContext(MainContext);
 
   return (
     <div className="search">

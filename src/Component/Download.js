@@ -1,6 +1,8 @@
+/* eslint-disable array-callback-return */
 import React, { useContext, useEffect, useState } from "react";
 import MainContext from "../MainContext";
 import { GrLink, GrDownload, GrClose } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 export default function Download() {
   const { selectedBrands, brands, setSelectedBrands } = useContext(MainContext);
@@ -27,7 +29,7 @@ export default function Download() {
           selectedBrands.map((slug) => {
             let brand = brands.find((brand) => brand.slug === slug);
             brand.colors.map((color, key) => {
-              output += `\$${slug}-${key}: #${color}\n`;
+              output += `\\$${slug}-${key}: #${color}\n`;
             });
           });
           break;
@@ -51,13 +53,6 @@ export default function Download() {
     }
   }, [brands, cssMethod, selectedBrands]);
 
-  const getLink = () => {
-    prompt(
-      "Here's the URL to share",
-      `http://localhost:3000/collection/${selectedBrands.join(",")}`
-    );
-  };
-
   return (
     <div className="download">
       <div className="action">
@@ -70,9 +65,9 @@ export default function Download() {
           <GrDownload />
         </a>
 
-        <button onClick={getLink}>
+        <Link to={`/collection/${selectedBrands.join(",")}`}>
           <GrLink />
-        </button>
+        </Link>
       </div>
       <div className="selected" onClick={() => setSelectedBrands([])}>
         <GrClose />

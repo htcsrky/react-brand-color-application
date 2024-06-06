@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { getConstrastIQ } from "../helper";
 import MainContext from "../MainContext";
 import ClipboardButton from "react-clipboard.js";
+import { GrCopy } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 export default function Brand({ brand }) {
   const { selectedBrands, setSelectedBrands, setCopied } =
@@ -39,10 +41,14 @@ export default function Brand({ brand }) {
               data-clipboard-text={color}
               onSuccess={() => setColor(color)}
             >
+              <GrCopy />
               {color}
             </ClipboardButton>
           ))}
         </div>
+        <Link to={`/permalink/${selectedBrands.join(",")}`} className="permaLink">
+          {selectedBrands.includes(brand.slug) ? "Permalink" : ""}
+        </Link>
       </div>
     </>
   );

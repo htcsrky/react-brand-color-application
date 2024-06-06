@@ -18,6 +18,7 @@ code {
   border: 0;
   outline: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 html,
 body {
@@ -179,7 +180,8 @@ body {
           margin-right: 15px;
           width: 15px;
           height: 15px;
-          color: #b0bec5;
+          color: #70828b;
+
           path {
             stroke-width: 2.8;
           }
@@ -209,11 +211,21 @@ body {
           margin-right: 15px;
           width: 12px;
           height: 12px;
-          color: #b0bec5;
+          color: #70828b;
+
           path {
             stroke-width: 2.8;
           }
         }
+      }
+    }
+    .back-btn {
+      background: transparent;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      svg {
+        display: block;
       }
     }
   }
@@ -232,6 +244,7 @@ body {
       }
       &-colors {
         display: flex;
+        margin-bottom: 10px;
         span {
           cursor: pointer;
           background: var(--bgColor);
@@ -239,20 +252,39 @@ body {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 14px;
-          font-weight: 500;
+          font-size: 16px;
+          font-weight: 600;
           color: var(--textColor);
           text-indent: -9999px;
           width: 70px;
+          svg {
+            color: transparent;
+          }
         }
       }
       &.selected {
         border-color: red;
         .brand-colors {
           span {
-            text-indent: 0;
             flex: 1;
+            &:hover {
+              text-indent: 0;
+              svg {
+                color: var(--textColor);
+                margin-right: 5px;
+                font-size: 20px;
+              }
+            }
           }
+        }
+      }
+      .permaLink {
+        font-size: 14px;
+        color: #607d8b;
+        font-weight: 500;
+        &:hover{
+          text-decoration: underline;
+          cursor: pointer;
         }
       }
     }
@@ -267,3 +299,4 @@ body {
   /* Edge 12-18 */
   color: #b0bec5;
 }
+
