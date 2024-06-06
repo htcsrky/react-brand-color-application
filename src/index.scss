@@ -242,7 +242,7 @@ body {
         margin-bottom: 10px;
         cursor: pointer;
       }
-      &-colors {
+      .brand-colors {
         display: flex;
         margin-bottom: 10px;
         span {
@@ -259,6 +259,23 @@ body {
           width: 70px;
           svg {
             color: transparent;
+          }
+        }
+      }
+      &.per {
+        .brand-colors {
+          flex-direction: column;
+          span {
+            margin: 8px;
+            width: 100%;
+            &:hover {
+              text-indent: 0;
+              svg {
+                color: var(--textColor);
+                margin-right: 5px;
+                font-size: 20px;
+              }
+            }
           }
         }
       }
@@ -282,7 +299,7 @@ body {
         font-size: 14px;
         color: #607d8b;
         font-weight: 500;
-        &:hover{
+        &:hover {
           text-decoration: underline;
           cursor: pointer;
         }
@@ -299,4 +316,3 @@ body {
   /* Edge 12-18 */
   color: #b0bec5;
 }
-

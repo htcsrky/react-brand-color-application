@@ -47,7 +47,7 @@ export default function Permalink() {
             >
               <div
                 className={`brand ${
-                  selectedBrands.includes(brand.slug) ? "selected" : ""
+                  selectedBrands.includes(brand.slug) ? "per" : ""
                 }`}
               >
                 <h5>{brand.title}</h5>
